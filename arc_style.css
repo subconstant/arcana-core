@@ -1,0 +1,75 @@
+body{
+    margin: 20px;
+    font-family: 'ＭＳ Ｐゴシック', 'MS PGothic', 'メイリオ', Meiryo, sans-serif;
+    font-size: 12pt;
+    background: #fff;
+    color: black;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+* {
+    filter: blur(0.4px);
+    -webkit-filter: blur(0.4px) !important;
+}
+
+
+a { color: inherit; }
+
+h3{
+    font-stretch: wider;
+}
+
+button{
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+#key{
+    opacity: 0.2;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+}
+
+.contain{
+    padding: 0;
+    height: 500px;
+    width: 400px;
+    z-index: 1 !important;
+    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: 1s;
+    margin-left: 20px;
+}
+
+#arcana_circle{
+    z-index: -10;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 200px;
+    height: auto;
+}
+
+/*
+#w1{ left: 12%; top:15% }
+#w2{ left: 30%; top:30% }
+#w3{ left: 50%; top:10% }
+*/
+
+.home_nav{
+    position: absolute;
+    left: 20px;
+    bottom: 50px;
+    line-height: 25px;
+}
+
+hr{
+    opacity: 0.5;
+}
