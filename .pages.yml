@@ -4,6 +4,8 @@ content:
     label: Posts
     path: _posts
     type: collection
+    view:
+      fields: [ title, date ]
     fields:
     - name: layout
       label: Page layout
@@ -33,3 +35,6 @@ content:
     - name: body
       label: Body
       type: rich-text
+    - name: date
+      label: Date
+      type: date
