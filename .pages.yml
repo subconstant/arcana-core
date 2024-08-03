@@ -1,0 +1,32 @@
+media: assets/img
+content:
+  - name: posts
+    label: Posts
+    path: _posts
+    type: collection
+    fields:
+    - name: layout
+      label: Page layout
+      type: Select
+      options:
+        values: [ post, redirect, article ]
+    - name: title
+      label: Title
+      type: string
+    - name: credits
+      label: Credits/Description
+      type: string
+    - name: category
+      label: Category
+      type: Select
+      options:
+        values: [ core, redirect, article ]
+    - name: relink
+      label: Redirect link (if redirect)
+      type: string
+    - name: hidden
+      label: Hide post
+      type: boolean
+    - name: preview
+      label: Preview image
+      type: string
