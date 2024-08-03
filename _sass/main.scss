@@ -1,0 +1,53 @@
+@use "home";
+@use "post";
+@use 'mobile';
+
+@import "var.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap");
+
+body {
+  margin: 0;
+  //font-family: 'MS Mincho', 'MS PGothic', 'メイリオ', Meiryo, sans-serif;
+  font-family: $font;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+  font-size: 12pt;
+  background: $bg-co;
+  color: $primary;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+hr {
+  opacity: 0.3;
+}
+
+h1, h2, h3{
+  font-weight: normal;
+}
+
+blockquote {
+  border-left: 1px solid $primary;
+  margin: 0;
+  padding: 0 0 0 20px !important;
+  font-style: italic;
+}
+
+/*
+.wb-min   { display: none !important }
+.wb-full  { display: none !important }
+//.wb-max   { display: none !important }
+.winbox {
+    box-shadow: none !important;
+    border: 1px solid black;
+    background: white !important;
+    max-width: 80vw;
+}
+.wb-header {
+    background: black !important;
+}
+*/

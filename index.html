@@ -1,56 +1,134 @@
+---
+---
+
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>A~R~C~A~N~A</title>
-        <link rel="stylesheet" href="arc_style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        </script>
-    </head>
+<head>
+  <meta charset="utf-8">
+  <title>A~R~C~A~N~A</title>
+  <link rel="icon" type="image/x-icon" href="/assets/img/key.png">
+  <link rel="stylesheet" href="/assets/css/styles.css">
 
-    <body>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--<div id="pre">
-            <img src="arcana_jrpg.png"/>
-            <button id="key" onclick="key()"></button>
+  <!--<link rel="stylesheet" href="https://rawcdn.githack.com/nextapps-de/winbox/0.2.82/dist/css/winbox.min.css">
+        <script src="https://rawcdn.githack.com/nextapps-de/winbox/0.2.82/dist/js/winbox.min.js"></script>-->
+
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+</head>
+
+<body id="homepage">
+
+  <div id="bganim"></div>
+  <img id="mob_logo" src="/assets/img/arcana_opti.png" />
+
+  <div id="fxcontain">
+    <div id="fxside">
+      <div id="menu">
+        <div id="logoimg">
+          <img src="/assets/img/arcana_opti.png" />
+        </div>
+
+        <div id="nav">
+          <div class="navlink">
+            <span class="navarrow">☉︎ </span>
+            <a href="about.html">About</a><br>
+          </div>
+
+          <div class="navlink">
+            <span class="navarrow">⮞ </span>
+            <a href="">Instagram</a><br>
+          </div>
+
+          <div class="navlink">
+            <span class="navarrow">✉ </span>
+            <a href="mailto:a.r.c.a.n.a.gateway@gmail.com">Submit</a><br>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div id="fxmain" class="fxbox">
+      <div id="fxmwindow">
+        <div id="postholder">
+
+          {% for post in site.posts %}
+          {% if post.hidden != true %}
+          <div class="postitem">
+            <div class="postdetail">
+              <img class="categimg" src="/assets/img/{{ post.category }}.png">
+
+              <a class="postname" href="#" onclick="win('{{ post.url }}')">{{ post.title }}</a>
+              <div class="credits">{{ post.credits }}</div>
+            </div>
+
+            <span class="postdate">
+              {{ post.date | date_to_string }}
+              <a href="{{ post.url }}" target="_blank">⬏</a>
+            </span>
+
+            {% if post.preview != null %}
+            <span class="postpreview">
+              <img src="{{ post.preview }}" />
+            </span>
+            {% endif %}
+          </div>
+
+          {% endif %}
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+      <div id="mob_feed">
+        <div class="mob_post">
+
+          {% for post in site.posts %}
+          {% if post.hidden != true %}
+          <a href="{{ post.url }}">
+
+            <hr>
+            {% if post.preview != null %}
+            <div class="mob_postpreview" style="background-image: url('{{ post.preview }}');">
+
+            </div>
+            {% endif %}
+
+            <div class="mob_postdetails">
+
+              <h2>{{ post.title }} <span style="float:right"><img class="categimg"
+                    src="/assets/img/{{ post.category }}.png"></span></h2>
+              <span class="mob_credits">{{ post.credits }}</span><br>
+              <span class="postdate">{{ post.date | date_to_string }}</span>
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+    <div id="fxdialog" class="">
+      <div id="avatar"> </div>
+      <div id="transmission">...</div>
+    </div>
+  </div>
+
+  <!--<div id="fxright">  
         </div>-->
 
-        <img id="arcana_circle" src="arcana_circle.png"/>
-        <img id="key" src="anikey.gif"/>
+  </div>
 
-        <div class="home_nav">
-            <a href="">about</a><br>
-            <a href="">instagram</a><br>
-            <a href="">submit</a> 
-        </div>
-
-        <div id="w1" class="contain">
-            <h3>network</h3>
-            ★ <a href="">project/portfolio/etc link</a><br>(post date) description
-            <hr>
-            ★ <a href="">project/portfolio/etc link</a><br>(post date) description
-        </div>
-
-        <div id="w2" class="contain">
-            <h3>core</h3>
-
-            ☽ <a href="">sample project</a><br>(post date) description 
-            <br>
-
-            <hr/>
-            ☽ <a href="">sample project</a><br>(post date) description 
-            <br>
-
-        </div>
-
-        <div id="w3" class="contain">
-            <h3>circle</h3>
-            ○ <a href="">swarm archive</a> : film & video art archive
-        </div>
-
-        <!--<script src="arc_script.js"></script>-->
-    </body>
+  <script src="/assets/js/script.js"></script>
+</body>
 
 
 </html>
