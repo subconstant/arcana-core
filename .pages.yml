@@ -11,7 +11,13 @@ content:
       label: Page layout
       type: Select
       options:
-        values: [ post, redirect, article ]
+        values:
+        - value: post
+          label: Post
+        - value: redirect
+          label: Redirect
+        - value: article
+          label: Article
     - name: title
       label: Title
       type: string
@@ -22,7 +28,13 @@ content:
       label: Category
       type: Select
       options:
-        values: [ core, redirect, article ]
+        values:
+        - value: post
+          label: Post
+        - value: redirect
+          label: Redirect
+        - value: article
+          label: Article
     - name: relink
       label: Redirect link (if redirect)
       type: string
