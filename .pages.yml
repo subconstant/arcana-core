@@ -30,3 +30,6 @@ content:
     - name: preview
       label: Preview image
       type: string
+    - name: body
+      label: Body
+      type: rich-text
