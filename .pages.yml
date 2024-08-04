@@ -35,6 +35,10 @@ content:
           label: Redirect
         - value: article
           label: Article
+        - value: resonate
+          label: Media
+        - value: unknown
+          label: Uncategorized
     - name: relink
       label: Redirect link (if redirect)
       type: string

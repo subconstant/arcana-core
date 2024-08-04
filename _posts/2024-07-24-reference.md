@@ -2,8 +2,9 @@
 layout: post
 title: "Layout Reference"
 credits: "Post composing example"
-category: core
+category: unknown
 preview: "https://placehold.co/1200x800"
+date: 2024-08-04
 ---
 
 <!--

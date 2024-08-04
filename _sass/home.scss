@@ -335,7 +335,7 @@
 }
 
 .navlink {
-  transform: translateX(-24%);
+  transform: translateX(-20%);
 }
 
 .navarrow {
@@ -396,8 +396,8 @@
 
 @for $i from 1 through 10 {
   .postitem:nth-child(#{$i}n) {
-    -webkit-animation-delay: #{$i / 4}s;
-            animation-delay: #{$i / 4}s;
+    -webkit-animation-delay: calc(($i / 4) * 1s);
+            animation-delay: calc(($i / 4) * 1s);
   }
 }
 
@@ -440,7 +440,7 @@
 .credits {
   white-space: nowrap;
   text-overflow: clip;
-  max-width: 65%;
+  max-width: 60%;
   text-overflow: "...";
   overflow: hidden;
   margin: 0;
@@ -455,6 +455,9 @@
 
 .postdate {
   float: right;
+  text-align: right;
   opacity: 0.5;
   min-width: 100px;
+  max-width: 150px;
+  width: 100%;
 }
