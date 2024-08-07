@@ -63,11 +63,13 @@
   #mob_logo {
     display: block;
     position: fixed;
-    top: 3%;
+    top: 2%;
     right: 3%;
-    width: 130px !important;
+    width: 60px;
+    height: auto;
+    /*width: 130px !important;
     transform: rotate(-90deg) translateX(26%);
-    transform-origin: bottom right;
+    transform-origin: bottom right;*/
     mix-blend-mode: difference;
     background-color: white;
     -webkit-filter: invert(1);
