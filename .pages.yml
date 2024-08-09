@@ -1,24 +1,4 @@
-media: assets/img
 content:
-  - name: announcements
-    label: Announcements
-    path: _announcements
-    type: collection
-    view:
-      fields: [ title, hidden, date ]
-    fields:
-    - name: title
-      label: Title
-      type: string
-    - name: hidden
-      label: Hide announcement
-      type: boolean
-    - name: date
-      label: Date
-      type: date
-    - name: body
-      label: Body
-      type: text
   - name: posts
     label: Posts
     path: _posts
@@ -70,6 +50,25 @@ content:
     - name: preview
       label: Preview image
       type: string
+    - name: body
+      label: Body
+      type: text
+  - name: announcements
+    label: Announcements
+    path: _announcements
+    type: collection
+    view:
+      fields: [ title, hidden, date ]
+    fields:
+    - name: title
+      label: Title
+      type: string
+    - name: hidden
+      label: Hide announcement
+      type: boolean
+    - name: date
+      label: Date
+      type: date
     - name: body
       label: Body
       type: text
