@@ -16,6 +16,9 @@ content:
     - name: date
       label: Date
       type: date
+    - name: body
+      label: Body
+      type: text
   - name: posts
     label: Posts
     path: _posts
@@ -55,6 +58,9 @@ content:
           label: Media
         - value: unknown
           label: Uncategorized
+    - name: date
+      label: Date
+      type: date
     - name: relink
       label: Redirect link (if redirect)
       type: string
@@ -67,6 +73,4 @@ content:
     - name: body
       label: Body
       type: text
-    - name: date
-      label: Date
-      type: date
+    

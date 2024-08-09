@@ -6,7 +6,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>A~R~C~A~N~A</title>
+  <title>Arcana</title>
   <link rel="icon" type="image/x-icon" href="/assets/img/key.png">
   <link rel="stylesheet" href="/assets/css/styles.css">
 
@@ -57,6 +57,20 @@
     <div id="fxmain" class="fxbox">
       <div id="fxmwindow">
         <div id="postholder">
+
+          {% assign notice = site.announcements | reverse %}
+          {% for item in notice limit:1  %}
+          {% if item.hidden != true %}
+          <div class="postitem bigpost postnotice">
+            <div>
+              <div class="announcetext">NOTICE<span style="float:right">POSTED {{ item.date | date_to_string | upcase }}</span></div>
+              <h3>{{ item.title }}</h3>
+              {{ item.content | markdownify }}
+              <br>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
 
           {% for post in site.posts limit:1 %}
           <div class="postitem bigpost" style="background-image: url('/assets/img/{{ post.category }}.png');">
@@ -110,6 +124,18 @@
       <div id="mob_feed">
         <div class="mob_post">
 
+          {% assign notice = site.announcements | reverse %}
+          {% for item in notice limit:1  %}
+          {% if item.hidden != true %}
+          <div class="mob_notice">
+            <div class="announcetext">NOTICE<span style="float:right">POSTED {{ item.date | date_to_string | upcase }}</span></div>
+            <h3>{{ item.title }}</h3>
+            {{ item.content | markdownify }}
+            <br>
+          </div>
+          {% endif %}
+          {% endfor %}
+
           {% for post in site.posts %}
           {% if post.hidden != true %}
           <a href="{{ post.url }}">
@@ -122,15 +148,14 @@
             {% endif %}
 
             <div class="mob_postdetails">
-
               <h2>{{ post.title }} <span style="float:right"><img class="categimg"
                     src="/assets/img/{{ post.category }}.png"></span></h2>
               <span class="mob_credits">{{ post.credits }}</span><br>
               <span class="postdate">{{ post.date | date_to_string }}</span>
-          </a>
-        </div>
-        {% endif %}
-        {% endfor %}
+            </a>
+          </div>
+          {% endif %}
+          {% endfor %}
 
       </div>
 
