@@ -4,7 +4,17 @@
 
 @import "var.scss";
 
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap");
+//@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap");
+
+@font-face {
+  font-family: "AUTHENTIC Sans 90";
+  src: url("/assets/font/authentic.woff2");
+}
+
+@font-face {
+  font-family: "Redaction 20";
+  src: url("/assets/font/redaction.woff2");
+}
 
 body {
   margin: 0;
