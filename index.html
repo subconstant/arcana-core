@@ -142,10 +142,28 @@
     </div>
   </div>
 
-  <!--<div id="fxright">  
-    
-  </div>-->
+  <div id="fxright"> 
+    {% assign notice = site.announcements | reverse %}
+    {% for item in notice limit:1  %}
+    {% if item.hidden != true %}
+    <div id="fxrpanel" >
+      <!--<h3>Friends of Arcana</h3>
+      <div id="webring">
+        {% for friend in site.data.friends %}
+        <a href="{{ friend.url }}">♥ {{ friend.name }}</a>
+        {% endfor %}
+      </div>
+      </div>-->
 
+      <div class="announcetext">NOTICE<span style="float:right">♥</span></div>
+      <br>
+      <h3>{{ item.title }}</h3>
+      {{ item.content | markdownify }}
+      <br>
+      <span class="announcetext">POSTED {{ item.date | date_to_string | upcase }}</span>   
+    </div>
+    {% endif %}
+    {% endfor %}
   </div>
 
   <script src="/assets/js/script.js"></script>

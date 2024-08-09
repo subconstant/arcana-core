@@ -1,11 +1,27 @@
 media: assets/img
 content:
+  - name: announcements
+    label: Announcements
+    path: _announcements
+    type: collection
+    view:
+      fields: [ title, hidden, date ]
+    fields:
+    - name: title
+      label: Title
+      type: string
+    - name: hidden
+      label: Hide announcement
+      type: boolean
+    - name: date
+      label: Date
+      type: date
   - name: posts
     label: Posts
     path: _posts
     type: collection
     view:
-      fields: [ title, date ]
+      fields: [ title, category, date ]
     fields:
     - name: layout
       label: Page layout
