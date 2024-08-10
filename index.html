@@ -72,8 +72,8 @@
           {% endif %}
           {% endfor %}
 
-          {% for post in site.posts limit:1 %}
-          {% if post.hidden != true %}
+          {% assign posts = site.posts | where_exp: 'post', 'post.hidden == false' %}
+          {% for post in posts limit:1 %}
           <div class="postitem bigpost" style="background-image: url('/assets/img/{{ post.category }}.png');">
             <div class="newpostimg" style="background-image: url('{{ post.preview }}');"></div>
             <div class="newpostdetail">
@@ -91,11 +91,10 @@
 
             </div>
           </div>
-          {% endif %}
           {% endfor %}
 
-          {% for post in site.posts offset:1 %}
-          {% if post.hidden != true %}
+          {% assign posts = site.posts | where_exp: 'post', 'post.hidden == false' %}
+          {% for post in posts offset:1 %}   
           <div class="postitem">
             <div class="postdetail">
               <img class="categimg" src="/assets/img/{{ post.category }}.png">
@@ -115,8 +114,6 @@
             </span>
             {% endif %}
           </div>
-
-          {% endif %}
           {% endfor %}
 
         </div>
