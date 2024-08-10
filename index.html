@@ -73,6 +73,7 @@
           {% endfor %}
 
           {% for post in site.posts limit:1 %}
+          {% if post.hidden != true %}
           <div class="postitem bigpost" style="background-image: url('/assets/img/{{ post.category }}.png');">
             <div class="newpostimg" style="background-image: url('{{ post.preview }}');"></div>
             <div class="newpostdetail">
@@ -90,6 +91,7 @@
 
             </div>
           </div>
+          {% endif %}
           {% endfor %}
 
           {% for post in site.posts offset:1 %}
