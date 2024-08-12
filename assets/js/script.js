@@ -41,6 +41,7 @@ $(document).ready(function () {
   $(".postcontent img").each(function (index, element) {
     $(element).wrap("<div class='postimg'></div>");
   });
+
 });
 
 document.addEventListener('mousemove', preview, false);
@@ -61,3 +62,4 @@ window.onscroll = function () {
     document.getElementById('postinfo').style.pointerEvents = 'all'
   }
 }
+

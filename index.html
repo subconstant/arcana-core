@@ -23,6 +23,21 @@
 <body id="homepage">
 
   <div id="bganim"></div>
+  <!-- <div id="bgholder">
+    <img class="bg" src="/assets/img/bg1.jpg"/>
+
+    
+    <img class="bg" src="/assets/img/bgt1.jpg"/>
+    <img class="bg" src="/assets/img/"/>
+    <img class="bg" src="/assets/img/"/>
+    <img class="bg" src="/assets/img/"/>
+    <img class="bg" src="/assets/img/"/>
+    <img class="bg" src="/assets/img/"/>
+    <img class="bg_alt" src="/assets/img/"/>
+    <img class="bg_alt" src="/assets/img/"/>
+    <img class="bg_alt" src="/assets/img/"/>
+  </div>-->
+
   <img id="mob_logo" src="/assets/img/arcana core.png" />
 
   <div id="fxcontain">
@@ -109,9 +124,9 @@
             </span>
 
             {% if post.preview != null %}
-            <span class="postpreview">
+            <div class="postpreview">
               <img src="{{ post.preview }}" />
-            </span>
+            </div>
             {% endif %}
           </div>
           {% endfor %}

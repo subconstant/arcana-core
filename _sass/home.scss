@@ -2,66 +2,41 @@
 
 // background image anim
 
-@-webkit-keyframes bg {
-  0% {
-    background: url('/assets/img/bgt1.jpg');
-    opacity: 0;
-  }
-
-  25% {
-    background: url('/assets/img/bgt1.jpg');
-    opacity: 0.15;
-  }
-
-  50% {
-    background: url('/assets/img/bgt1.jpg');
-    opacity: 0;
-  }
-
-  51% {
-    background: url('/assets/img/bgt2.jpg');
-    opacity: 0;
-  }
-
-  75% {
-    background: url('/assets/img/bgt2.jpg');
-    opacity: 0.15;
-  }
-
-  100% {
-    background: url('/assets/img/bgt2.jpg');
-    opacity: 0;
-  }
-}
-
 @keyframes bg {
   0% {
-    background: url('/assets/img/bgt1.jpg');
+    background: url('/assets/img/bg1.jpg');
+    background-size: cover;
     opacity: 0;
+    
   }
 
   25% {
-    background: url('/assets/img/bgt1.jpg');
+    background: url('/assets/img/bg1.jpg');
+    background-size: cover;
     opacity: 0.15;
   }
 
   50% {
-    background: url('/assets/img/bgt1.jpg');
+    background: url('/assets/img/bg1.jpg');
+    background-size: cover;
     opacity: 0;
   }
 
   51% {
     background: url('/assets/img/bgt2.jpg');
+    background-size: cover;
     opacity: 0;
   }
 
   75% {
     background: url('/assets/img/bgt2.jpg');
+    background-size: cover;
     opacity: 0.15;
   }
 
   100% {
     background: url('/assets/img/bgt2.jpg');
+    background-size: cover;
     opacity: 0;
   }
 }
@@ -139,10 +114,11 @@
 
 
 #bganim {
-  
   width: 100%;
   height: 100%;
+  background: url('');
   background-size: cover;
+  background-position: center;
   position: absolute;
   z-index: -100;
   -webkit-animation: infinite 20s bg;
@@ -150,6 +126,26 @@
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
+
+#bgholder{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -100;
+  background: gray;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  opacity: 0.15;
+
+  img{
+    width: 100vw;
+    min-height: 100vw;
+  }
+}
+
 
 
 //main homepage layout
@@ -173,7 +169,7 @@
   flex-direction: row;
   -moz-column-gap: 2vw;
   column-gap: 2vw;
-  padding: 3vh 5vw 4vh 6vw;
+  padding: 3vh 5vw 4vh 7vw;
 
   @media (max-width: 1800px) {
     column-gap: 1vw;
@@ -276,6 +272,7 @@
 
 #fxdialog {
   width: 97%;
+  z-index: 1;
   padding-top: 10px;
   height: 200px !important;
   margin-left: auto;
@@ -396,7 +393,7 @@
   opacity: 1 !important;
 
   .postpreview {
-    opacity: 0.8;
+    display: block;
   }
 
 }
@@ -414,12 +411,13 @@
 }
 
 .postpreview {
-  opacity: 0;
-  transition: 0.2s;
+  //opacity: 0;
+  display: none;
+  //transition: 0.2s;
   margin-left: 28px;
   padding: 10px;
   position: absolute;
-  z-index: 1000;
+  z-index: 100;
   width: 500px;
   height: 500px;
 }
