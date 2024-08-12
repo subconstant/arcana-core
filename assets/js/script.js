@@ -63,3 +63,38 @@ window.onscroll = function () {
   }
 }
 
+
+const images = document.querySelectorAll('#bgholder img');
+const fadeInTime = 1000;
+const displayTime = 8000;
+const fadeOutTime = 1000;
+
+function getRandomImage() {
+  let weightedImages = [];
+
+  images.forEach(image => {
+    if (image.classList.contains('bg')) {
+      // Give 'bg' images a higher weight (e.g., 4x more likely)
+      weightedImages.push(image, image, image, image);
+    } else if (image.classList.contains('bg_alt')) {
+      // Give 'bg_alt' images a lower weight (e.g., 1x)
+      weightedImages.push(image);
+    }
+  });
+
+  const randomIndex = Math.floor(Math.random() * weightedImages.length);
+  return weightedImages[randomIndex];
+}
+
+function showRandomImage() {
+  const randomImage = getRandomImage();
+
+  randomImage.classList.add('active');
+
+  setTimeout(() => {
+    randomImage.classList.remove('active');
+  }, displayTime);
+  setTimeout(showRandomImage, displayTime + fadeOutTime);
+}
+
+setTimeout(showRandomImage,1500);
