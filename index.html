@@ -38,6 +38,10 @@
 
   <img id="mob_logo" src="/assets/img/arcana core.png" />
 
+  <div id="postpreview">
+    <img id="previewimg" src="" />
+  </div>
+
   <div id="fxcontain">
     <div id="fxside">
       <div id="menu">
@@ -108,7 +112,7 @@
 
           {% assign posts = site.posts | where_exp: 'post', 'post.hidden == false' %}
           {% for post in posts offset:1 %}   
-          <div class="postitem">
+          <div class="postitem smallpost" data-preview="{{ post.preview }}">
             <div class="postdetail">
               <img class="categimg" src="/assets/img/{{ post.category }}.png">
 
@@ -121,11 +125,6 @@
               <a href="{{ post.url }}" target="_blank">⬏</a>
             </span>
 
-            {% if post.preview != null %}
-            <div class="postpreview">
-              <img src="{{ post.preview }}" />
-            </div>
-            {% endif %}
           </div>
           {% endfor %}
 

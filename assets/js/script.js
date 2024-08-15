@@ -44,14 +44,25 @@ $(document).ready(function () {
 
 });
 
-document.addEventListener('mousemove', preview, false);
+const previmg = document.getElementById('previewimg');
+const prev = document.getElementById('postpreview');
 
-function preview(e) {
-  for (var i = $('.postpreview').length; i--;) {
-    $('.postpreview')[i].style.left = e.clientX + 'px';
-    $('.postpreview')[i].style.top = e.clientY + 'px';
-  }
-}
+document.querySelectorAll('.smallpost').forEach(function(item){
+  
+  item.onmouseover = function(e){
+    previmg.src = item.dataset.preview;
+    prev.style.display = 'block';
+  };
+
+  item.onmousemove = function(e){
+    prev.style.left = e.clientX + 'px';
+    prev.style.top = e.clientY + 'px';
+  };
+
+  item.onmouseleave = function(e){
+    prev.style.display = 'none';
+  };
+});
 
 window.onscroll = function () {
   if (window.scrollY >= 20) {
@@ -62,7 +73,6 @@ window.onscroll = function () {
     document.getElementById('postinfo').style.pointerEvents = 'all'
   }
 }
-
 
 const images = document.querySelectorAll('#bgholder img');
 const fadeInTime = 1000;

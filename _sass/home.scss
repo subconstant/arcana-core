@@ -208,19 +208,32 @@
   flex-direction: column;
   justify-content: space-between;
   min-width: 14vw;
-  max-width: 14vw;
+  width: 14vw;
+  max-width: 258px !important;
   box-sizing: border-box;
 }
 
 #avatar {
   width: 32vh;
   height: 32vh;
-  transform: translateX(-25vh) translateY(-10vh);
-  z-index: 10;
+  max-width: 303px !important;
+  max-height: 303px !important;
   background-image: url('/assets/img/noise.gif'), url('/assets/img/avatarframe.png');
-  background-size: 22.4vh 22.4vh, contain;
   background-position: center;
   background-repeat: no-repeat;
+  //transform: translateX(-25vh) translateY(-10vh);
+  @media (max-width:1920px) {
+    transform: translateX(-25vh) translateY(-10vh);
+    background-size: 22.4vh 22.4vh, contain;
+  }
+
+  @media (min-width:1920px){
+    transform: translateX(-270px) translateY(-108px);
+    background-size: 212px 212px, contain;
+  }
+  
+  z-index: 10;
+ 
 
   opacity: 0;
   -webkit-animation: intro 0.3s ease-in 1s 1 forwards !important;
@@ -258,8 +271,8 @@
   width: 100%;
   height: 100%;
   justify-content: center;
-  /*background: url('/assets/img/frame1.png') no-repeat center;
-    background-size: contain;*/
+  max-width: 993px !important;
+  max-height: 775px !important;
 }
 
 #fxmwindow {
@@ -412,9 +425,9 @@
 .postitem:hover {
   opacity: 1 !important;
 
-  .postpreview {
+  /*.postpreview {
     display: block;
-  }
+  }*/
 
 }
 
@@ -427,22 +440,21 @@
 
 .postname {
   overflow: hidden;
-  max-height: 100%cqh;
+  max-height: 100%;
 }
 
-.postpreview {
-  //opacity: 0;
+#postpreview {
   display: none;
-  //transition: 0.2s;
   margin-left: 28px;
   padding: 10px;
   position: absolute;
   z-index: 100;
   width: 500px;
   height: 500px;
+  border: none;
 }
 
-.postpreview img {
+#previewimg {
   -o-object-fit: contain;
   object-fit: contain;
   -o-object-position: top left;
@@ -451,10 +463,6 @@
   height: 100%;
 }
 
-.postpreview:active {
-  transition: none !important;
-  -moz-transition: none !important;
-}
 
 .postdetail {
   display: flex;
@@ -541,6 +549,7 @@ label{
   box-shadow: $boxblur;
   padding: 20px;
   width: 15vw;
+  max-width: 330px !important;
   margin-top: 10vh;
   text-shadow: none;
   font-size: 10pt;
