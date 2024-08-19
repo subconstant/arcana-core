@@ -135,7 +135,7 @@
 }
 
 #fxcontain {
-  max-height: 882px !important;
+  max-height: 882px;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -225,9 +225,7 @@
 
 #fxdialog {
   width: 97%;
-  padding-top: 10px;
   height: 160px;
-  max-height: 21vh;
   margin-left: auto;
   margin-right: auto;
   background-image: url('/assets/img/diagframe.png');
