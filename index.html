@@ -36,8 +36,6 @@
     <img class="bg_alt" src="/assets/img/bg10.png"/>
   </div>
 
-  <img id="mob_logo" src="/assets/img/arcana core.png" />
-
   <div id="postpreview">
     <img id="previewimg" src="" />
   </div>
@@ -45,22 +43,22 @@
   <div id="fxcontain">
     <div id="fxside">
       <div id="menu">
-        <div id="logoimg">
-          <img src="/assets/img/arcana 3startext.png" />
-        </div>
-
         <div id="nav">
-          <div class="navlink">
+          <div id="logoimg" class="tempclr">
+            <img src="/assets/img/arcana 3startext.png" />
+          </div>
+
+          <div class="navlink tempclr">
             <span class="navarrow"><img src="/assets/img/heart.svg" /></span>
             <a href="about.html">About</a>
           </div>
 
-          <div class="navlink">
+          <div class="navlink tempclr">
             <span class="navarrow"><img src="/assets/img/instagram.svg" /></span>
             <a href="">Instagram</a>
           </div>
 
-          <div class="navlink">
+          <div class="navlink tempclr">
             <span class="navarrow"><img src="/assets/img/mail.svg" /></span>
             <a href="mailto:a.r.c.a.n.a.gateway@gmail.com">Submit</a>
           </div>
@@ -127,56 +125,17 @@
 
           </div>
           {% endfor %}
-
         </div>
-
       </div>
 
-      <div id="mob_feed">
-        <div class="mob_post">
-
-          {% assign notice = site.announcements | reverse %}
-          {% for item in notice limit:1  %}
-          {% if item.hidden != true %}
-          <div class="mob_notice">
-            <div class="announcetext">NOTICE<span style="float:right">POSTED {{ item.date | date_to_string | upcase }}</span></div>
-            <h3>{{ item.title }}</h3>
-            {{ item.content | markdownify }}
-            <br>
-          </div>
-          {% endif %}
-          {% endfor %}
-
-          {% for post in site.posts %}
-          {% if post.hidden != true %}
-          <a href="{{ post.url }}">
-
-            <hr>
-            {% if post.preview != null %}
-            <div class="mob_postpreview" style="background-image: url('{{ post.preview }}');">
-
-            </div>
-            {% endif %}
-
-            <div class="mob_postdetails">
-              <h2>{{ post.title }} <span style="float:right"><img class="categimg"
-                    src="/assets/img/{{ post.category }}.png"></span></h2>
-              <span class="mob_credits">{{ post.credits }}</span><br>
-              <span class="postdate">{{ post.date | date_to_string }}</span>
-            </a>
-          </div>
-          {% endif %}
-          {% endfor %}
-
+    <div id="fxchar" class="">
+      <div id="fxdialog" class="">
+        <div id="transmission">...</div>
       </div>
-
-    </div>
-
-    <div id="fxdialog" class="">
       <div id="avatar"> </div>
-      <div id="transmission">...</div>
     </div>
   </div>
+
 
   <div id="fxright"> 
     {% assign notice = site.announcements | reverse %}
@@ -201,6 +160,7 @@
     {% endif %}
     {% endfor %}
   </div>
+</div>
 
   <script src="/assets/js/script.js"></script>
 </body>
