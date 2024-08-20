@@ -38,6 +38,7 @@ $avatars: min(300px, 25vh, 40vw);
       right: 6px;
       width: calc(100vw - 10px - $avatars);
       height: $avatars;
+      max-height: $avatars;
       bottom: 0;
     }
 

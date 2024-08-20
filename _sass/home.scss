@@ -135,7 +135,7 @@
 }
 
 #fxcontain {
-  max-height: 882px;
+  max-height: 850.629px;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -167,8 +167,8 @@
 }
 
 #avatar {
-  width: 302px;
-  height: 302px;
+  width: 304px;
+  height: 304px;
   max-width: min(31vh, 19vw);
   max-height: min(31vh, 19vw);
   background-image: url('/assets/img/noise.gif'), url('/assets/img/avatarframe.png');
@@ -177,7 +177,7 @@
   background-size: 70% 69.5%, contain;
   z-index: 10;
   opacity: 0;
-  transform: translateX(-89%) translateY(-42.5%);
+  transform: translateX(-84%) translateY(-88.5%);
   -webkit-animation: intro 0.3s ease-in 1s 1 forwards !important;
           animation: intro 0.3s ease-in 1s 1 forwards !important;
 }
@@ -186,7 +186,7 @@
   width: 100%;
   height: 100%;
   justify-content: center;
-  max-width: 993px !important;
+  max-width: 992.988px !important;
   max-height: 775px !important;
 }
 
@@ -225,7 +225,8 @@
 
 #fxdialog {
   width: 97%;
-  height: 160px;
+  height: 169px;
+  max-height: 22vh;
   margin-left: auto;
   margin-right: auto;
   background-image: url('/assets/img/diagframe.png');
@@ -282,6 +283,7 @@
 
 #menu img {
   width: 12vw;
+  max-width: 288.11px;
 }
 
 #nav {
