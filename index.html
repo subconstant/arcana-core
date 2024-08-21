@@ -24,16 +24,16 @@
 
   <!--<div id="bganim"></div>-->
   <div id="bgholder">
-    <img class="bg" src="/assets/img/bg1.jpg"/>
-    <img class="bg" src="/assets/img/bg2.png"/>
-    <img class="bg" src="/assets/img/bg3.png"/>
-    <img class="bg" src="/assets/img/bg4.png"/>
-    <img class="bg" src="/assets/img/bg5.png"/>
-    <img class="bg" src="/assets/img/bg6.png"/>
-    <img class="bg" src="/assets/img/bg7.png"/>
-    <img class="bg_alt" src="/assets/img/bg8.png"/>
-    <img class="bg_alt" src="/assets/img/bg9.png"/>
-    <img class="bg_alt" src="/assets/img/bg10.png"/>
+    <img class="bg" src="/assets/img/bg1.jpg" />
+    <img class="bg" src="/assets/img/bg2.png" />
+    <img class="bg" src="/assets/img/bg3.png" />
+    <img class="bg" src="/assets/img/bg4.png" />
+    <img class="bg" src="/assets/img/bg5.png" />
+    <img class="bg" src="/assets/img/bg6.png" />
+    <img class="bg" src="/assets/img/bg7.png" />
+    <img class="bg_alt" src="/assets/img/bg8.png" />
+    <img class="bg_alt" src="/assets/img/bg9.png" />
+    <img class="bg_alt" src="/assets/img/bg10.png" />
   </div>
 
   <div id="postpreview">
@@ -43,11 +43,10 @@
   <div id="fxcontain">
     <div id="fxside">
       <div id="menu">
+        <div id="logoimg" class="tempclr">
+          <img src="/assets/img/arcana 3startext.png" />
+        </div>
         <div id="nav">
-          <div id="logoimg" class="tempclr">
-            <img src="/assets/img/arcana 3startext.png" />
-          </div>
-
           <div class="navlink tempclr">
             <span class="navarrow"><img src="/assets/img/heart.svg" /></span>
             <a href="about.html">About</a>
@@ -74,11 +73,12 @@
         <div id="postholder">
 
           {% assign notice = site.announcements | reverse %}
-          {% for item in notice limit:1  %}
+          {% for item in notice limit:1 %}
           {% if item.hidden != true %}
           <div class="postitem bigpost postnotice">
             <div>
-              <div class="announcetext">NOTICE<span style="float:right">POSTED {{ item.date | date_to_string | upcase }}</span></div>
+              <div class="announcetext">NOTICE<span style="float:right">POSTED {{ item.date | date_to_string | upcase
+                  }}</span></div>
               <h3>{{ item.title }}</h3>
               {{ item.content | markdownify }}
               <br>
@@ -93,7 +93,7 @@
             <div class="newpostimg" style="background-image: url('{{ post.preview }}');"></div>
             <div class="newpostdetail">
 
-              <h2><a href="#" onclick="win('{{ post.url }}')">{{ post.title }}</a></h2>
+              <h2><a href="{{ post.url }}" onclick="win('{{ post.url }}'); return false;">{{ post.title }}</a></h2>
               <div class="credits">{{ post.credits }}</div>
 
               <div>
@@ -109,12 +109,13 @@
           {% endfor %}
 
           {% assign posts = site.posts | where_exp: 'post', 'post.hidden == false' %}
-          {% for post in posts offset:1 %}   
+          {% for post in posts offset:1 %}
           <div class="postitem smallpost" data-preview="{{ post.preview }}">
             <div class="postdetail">
               <img class="categimg" src="/assets/img/{{ post.category }}.png">
 
-              <a class="postname" href="#" onclick="win('{{ post.url }}')">{{ post.title }}</a>
+              <a class="postname" href="{{ post.url }}" onclick="win('{{ post.url }}'); return false;">{{ post.title
+                }}</a>
               <div class="credits">{{ post.credits }}</div>
             </div>
 
@@ -128,21 +129,21 @@
         </div>
       </div>
 
-    <div id="fxchar" class="">
-      <div id="fxdialog" class="">
-        <div id="transmission">...</div>
+      <div id="fxchar" class="">
+        <div id="fxdialog" class="">
+          <div id="transmission">...</div>
+        </div>
+        <div id="avatar"> </div>
       </div>
-      <div id="avatar"> </div>
     </div>
-  </div>
 
 
-  <div id="fxright"> 
-    {% assign notice = site.announcements | reverse %}
-    {% for item in notice limit:1  %}
-    {% if item.hidden != true %}
-    <div id="fxrpanel" >
-      <!--<h3>Friends of Arcana</h3>
+    <div id="fxright">
+      {% assign notice = site.announcements | reverse %}
+      {% for item in notice limit:1 %}
+      {% if item.hidden != true %}
+      <div id="fxrpanel">
+        <!--<h3>Friends of Arcana</h3>
       <div id="webring">
         {% for friend in site.data.friends %}
         <a href="{{ friend.url }}">♥ {{ friend.name }}</a>
@@ -150,17 +151,58 @@
       </div>
       </div>-->
 
-      <div class="announcetext">NOTICE<span style="float:right">♥</span></div>
-      <br>
-      <h3>{{ item.title }}</h3>
-      {{ item.content | markdownify }}
-      <br>
-      <span class="announcetext">POSTED {{ item.date | date_to_string | upcase }}</span>   
+        <div class="announcetext">NOTICE<span style="float:right">♥</span></div>
+        <br>
+        <h3>{{ item.title }}</h3>
+        {{ item.content | markdownify }}
+        <br>
+        <span class="announcetext">POSTED {{ item.date | date_to_string | upcase }}</span>
+      </div>
+      {% endif %}
+      {% endfor %}
     </div>
-    {% endif %}
-    {% endfor %}
+
+    <div id="mob_feed">
+      <div class="mob_post">
+
+        {% assign notice = site.announcements | reverse %}
+        {% for item in notice limit:1 %}
+        {% if item.hidden != true %}
+        <div class="mob_notice">
+          <div class="announcetext">NOTICE<span style="float:right">POSTED {{ item.date | date_to_string | upcase
+              }}</span></div>
+          <h3>{{ item.title }}</h3>
+          {{ item.content | markdownify }}
+          <br>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% for post in site.posts %}
+        {% if post.hidden != true %}
+        <a href="{{ post.url }}">
+
+          <hr>
+          {% if post.preview != null %}
+          <div class="mob_postpreview" style="background-image: url('{{ post.preview }}');">
+
+          </div>
+          {% endif %}
+
+          <div class="mob_postdetails">
+            <h2>{{ post.title }} <span style="float:right"><img class="categimg"
+                  src="/assets/img/{{ post.category }}.png"></span></h2>
+            <span class="mob_credits">{{ post.credits }}</span><br>
+            <span class="postdate">{{ post.date | date_to_string }}</span>
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+
+    </div>
   </div>
-</div>
+
+
 
   <script src="/assets/js/script.js"></script>
 </body>
