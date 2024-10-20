@@ -171,10 +171,10 @@
   height: 304px;
   max-width: min(31vh, 19vw);
   max-height: min(31vh, 19vw);
-  background-image: url('/assets/img/noise.gif'), url('/assets/img/avatarframe.png');
+  background-image: url('/assets/img/avatar/1.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 70% 69.5%, contain;
+  background-size: 100% 100%;
   z-index: 10;
   opacity: 0;
   transform: translateX(-84%) translateY(-88.5%);

@@ -19,20 +19,25 @@ A~R~C~A~N~A Layout Reference
 ![](https://placehold.co/1200x800)
 ![](https://placehold.co/800x1280)
 
+### Image with caption
+
+![](https://placehold.co/1200x800)
+*Image Caption*
 
 ### Horizontal image grid
 Must be same aspect ratio. Collapses to vertical on mobile.
 
+{:.columns}
 * ![](https://placehold.co/1280x800)
 * ![](https://placehold.co/1280x800)
 
-<!-- add an empty comment between two grids if directly following one another -->
-
+{:.columns}
 * ![](https://placehold.co/800x1280)
 * ![](https://placehold.co/800x1280)
 
-<!-- add an empty comment between two grids if directly following one another -->
+*Grid caption*
 
+{:.columns}
 * ![](https://placehold.co/800x1280)
 * ![](https://placehold.co/800x1280)
 * ![](https://placehold.co/800x1280)
@@ -40,12 +45,18 @@ Must be same aspect ratio. Collapses to vertical on mobile.
 
 ### Focus section with one zoomed out image
 
-_![](https://placehold.co/800x1200)_
+{:.focus}
+* ![](https://placehold.co/1200x800)
+
+{:.focus}
+* ![](https://placehold.co/800x1200)
+*Image Caption*
 
 
 ### Image that extends to window frame margins
 
-**![](https://placehold.co/1920x1080)**
+{:.extended}
+* ![](https://placehold.co/1920x1080)
 
 
 _Italic text example_

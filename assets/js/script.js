@@ -1,4 +1,6 @@
 const domain = '127.0.0.1' //! change once deployed with domain!
+const avatars = 2;
+var cav;
 
 function win(url) {
   /*new WinBox({
@@ -42,13 +44,27 @@ $(document).ready(function () {
     $(element).wrap("<div class='postimg'></div>");
   });
 
+  cav = Math.floor(Math.random() * avatars) + 1;
+  $('#avatar').css("background-image","url('/assets/img/avatar/"
+                  +cav+
+                  ".png')");
+
 });
+
+function switchavatar() {
+  cav < avatars ? cav = cav+1
+                : cav = 1;
+
+  $('#avatar').css("background-image","url('/assets/img/avatar/"
+                  +cav+
+                  ".png')");
+};
 
 const previmg = document.getElementById('previewimg');
 const prev = document.getElementById('postpreview');
 
 document.querySelectorAll('.smallpost').forEach(function(item){
-  
+
   item.onmouseover = function(e){
     previmg.src = item.dataset.preview;
     prev.style.display = 'block';
