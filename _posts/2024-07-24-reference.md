@@ -5,7 +5,7 @@ credits: "Post composing example"
 category: unknown
 preview: "https://placehold.co/1200x800"
 date: 2024-08-04
-hidden: false
+hidden: true
 ---
 
 <!--
@@ -76,3 +76,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at eros qua
   Element with custom style - can be applied to the whole page
 </div>
 
+
+<!-- three.js 3d viewer:
+<div id="three" data-file="assets/3d/heartsword.gltf"></div>
+-->

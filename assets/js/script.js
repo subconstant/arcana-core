@@ -1,12 +1,14 @@
 const domain = '127.0.0.1' //! change once deployed with domain!
-const avatars = 2;
-var cav;
+const avatar_count = [7,9]; // for 2 sets of avatars, second unused rn
+var current_avatar = [0,0];
+
+var msg = [
+  '...'
+];
+
+Array.prototype.random = function () { return this[Math.floor((Math.random()*this.length))]; }
 
 function win(url) {
-  /*new WinBox({
-      title: title,
-      url: url
-  });*/
   let height = window.screen.availHeight - 300;
   let width = window.screen.availWidth - 400;
 
@@ -44,21 +46,30 @@ $(document).ready(function () {
     $(element).wrap("<div class='postimg'></div>");
   });
 
-  cav = Math.floor(Math.random() * avatars) + 1;
+  current_avatar[0] = Math.floor(Math.random() * avatar_count[0]) + 1;
+  console.log(current_avatar[0]);
   $('#avatar').css("background-image","url('/assets/img/avatar/"
-                  +cav+
+                  +current_avatar[0]+
                   ".png')");
+
+  $('#transmission')[0].innerHTML = msg.random();
 
 });
 
-function switchavatar() {
-  cav < avatars ? cav = cav+1
-                : cav = 1;
+function switchavatar() { // with second set of avatars, unused
+  current_avatar[0] < avatar_count[0] ? current_avatar[0] = current_avatar[0] +1
+                                      : current_avatar[0] = 1;
 
-  $('#avatar').css("background-image","url('/assets/img/avatar/"
-                  +cav+
-                  ".png')");
-};
+  current_avatar[1] < avatar_count[1] ? current_avatar[1] = current_avatar[1] +1
+                                      : current_avatar[1] = 1;
+
+  $('#avatar').css("background-image","url('/assets/img/avatar/alt/"+current_avatar[1]+".png')")
+              .delay(200)
+              .queue(function (next) {
+                $(this).css("background-image","url('/assets/img/avatar/"+current_avatar[0]+".png')");
+                next();
+              });
+}
 
 const previmg = document.getElementById('previewimg');
 const prev = document.getElementById('postpreview');
@@ -124,3 +135,7 @@ function showRandomImage() {
 }
 
 setTimeout(showRandomImage,1500);
+
+//threejs
+const threecontainer = document.getElementById('three');
+console.log(threecontainer.dataset.file);

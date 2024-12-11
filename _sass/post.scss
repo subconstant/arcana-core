@@ -58,7 +58,7 @@
   }
 }
 
-.postcontent * :not(h1, h2, h3) {
+.postcontent * :not(h1, h2, h3, canvas) {
   padding: 10px 0 10px 0;
 }
 
@@ -164,4 +164,10 @@ li:has(.postimg) {
     }
   }
 
+}
+
+#three {
+  height: 600px;
+  width: 100%;
+  border: 1px solid #333;
 }

@@ -1,57 +1,137 @@
 ---
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ page.title }}</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/assets/img/{{page.category}}.png"
+    />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <title>{{ page.title }}</title>
-  <link rel="icon" type="image/x-icon" href="/assets/img/{{page.category}}.png">
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="{{ page.title }}" />
+    <meta name="description" content="{{ page.credits }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://a-r-c-a-n-a.moe/" />
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:description" content="{{ page.credits }}" />
+    <meta property="og:image" content="{{ page.preview }}" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://a-r-c-a-n-a.moe/" />
+    <meta property="twitter:title" content="{{ page.title }}" />
+    <meta property="twitter:description" content="{{ page.credits }}" />
+    <meta property="twitter:image" content="{{ page.preview }}" />
 
-  <meta name="title" content="{{ page.title }}" />
-  <meta name="description" content="{{ page.credits }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://a-r-c-a-n-a.moe/" />
-  <meta property="og:title" content="{{ page.title }}" />
-  <meta property="og:description" content="{{ page.credits }}" />
-  <meta property="og:image" content="{{ page.preview }}" />
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://a-r-c-a-n-a.moe/" />
-  <meta property="twitter:title" content="{{ page.title }}" />
-  <meta property="twitter:description" content="{{ page.credits }}" />
-  <meta property="twitter:image" content="{{ page.preview }}" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
 
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-</head>
+  <body class="postbody">
+    <div class="postinfo" id="postinfo">
+      <a id="postlogo" href="/"><img src="/assets/img/arcana core.png" /></a>
 
-<body class="postbody">
-
-  <div class="postinfo" id="postinfo">
-
-    <a id="postlogo" href="/"><img src="/assets/img/arcana core.png" /></a>
-
-
-    <span>
-      <a id="backlink" href="">(back)</a>
-      <b>{{ page.title }}</b> <i>{{ page.date | date_to_string }}</i>
-      <!--<hr>
+      <span>
+        <a id="backlink" href="">(back)</a>
+        <b>{{ page.title }}</b> <i>{{ page.date | date_to_string }}</i>
+        <!--<hr>
                 {{ page.credits }}-->
-    </span>
-  </div>
+      </span>
+    </div>
 
-  <div class="postcontent {% if page.article == true %}postarticle{% endif %}">
-    {{ content }}
-  </div>
+    <div
+      class="postcontent {% if page.article == true %}postarticle{% endif %}"
+    >
+      {{ content }}
+    </div>
 
-  <br><br>
+    <br /><br />
 
-  <script src="/assets/js/script.js"></script>
+    <!--threejs-->
+    <script type="module">
+      import * as THREE from "three";
+      import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-</body>
+      // Get the container div for rendering
+      const container = document.getElementById("three");
+      const postmodel = container.dataset.file;
 
+      // Set up the scene, camera, and renderer
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        45,
+        container.clientWidth / container.clientHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setClearColor(0xffffff, 1);
+      container.appendChild(renderer.domElement);
+
+      // Adjust the camera position
+      camera.position.set(0, 1, 3);
+
+      // Add OrbitControls
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; // Smooth the controls
+      controls.dampingFactor = 0.1;
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); // Ambient light for general brightness
+      scene.add(ambientLight);
+
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(5, 10, 7.5).normalize(); // Directional light for shadows and highlights
+      scene.add(directionalLight);
+
+      // Load GLTF model
+      const loader = new GLTFLoader();
+      loader.load(
+        postmodel,
+        (gltf) => {
+          const model = gltf.scene;
+          model.scale.set(1, 1, 1); // Adjust the scale if needed
+          scene.add(model);
+          animate();
+        },
+        undefined,
+        (error) => {
+          console.error("An error occurred while loading the model:", error);
+        }
+      );
+
+      // Resize handler
+      window.addEventListener("resize", () => {
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+      });
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update(); // Update the controls on each frame
+        renderer.render(scene, camera);
+      }
+    </script>
+    <script src="/assets/js/script.js"></script>
+  </body>
 </html>
