@@ -54,6 +54,10 @@ $(document).ready(function () {
 
   $('#transmission')[0].innerHTML = msg.random();
 
+  if (window.matchMedia("(max-width: 1000px)").matches) {
+    $('.postcontent *').removeAttr('style');
+  }
+
 });
 
 function switchavatar() { // with second set of avatars, unused
