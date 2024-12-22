@@ -16,6 +16,10 @@ function win(url) {
 }
 
 $(document).ready(function () {
+  if (window.matchMedia("(max-width: 1000px)").matches) {
+    console.log('loaded on mobile');
+    $('.postcontent').find('*').removeAttr('style');
+  }
 
   $('#backlink').attr('href', document.referrer);
 
@@ -23,7 +27,7 @@ $(document).ready(function () {
   if (window.menubar.visible) {
     let url = new URL(location);
     url.searchParams.delete('pop');
-    history.replaceState(null, null, url)
+    history.replaceState(null, null, url);
   }
 
   if (window.location.search.includes('?pop')) {
@@ -53,10 +57,6 @@ $(document).ready(function () {
                   ".png')");
 
   $('#transmission')[0].innerHTML = msg.random();
-
-  if (window.matchMedia("(max-width: 1000px)").matches) {
-    $('.postcontent *').removeAttr('style');
-  }
 
 });
 
