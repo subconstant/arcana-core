@@ -1,5 +1,5 @@
 const domain = '127.0.0.1' //! change once deployed with domain!
-const avatar_count = [14,9]; // for 2 sets of avatars, second unused rn
+const avatar_count = [12,9]; // for 2 sets of avatars, second unused rn
 var current_avatar = [0,0];
 
 var msg = [
