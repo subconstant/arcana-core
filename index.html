@@ -100,7 +100,7 @@
           {% endif %}
           {% endfor %}
 
-          {% assign posts = site.posts | where_exp: 'post', 'post.hidden == false' %}
+          <!--{% assign posts = site.posts | where_exp: 'post', 'post.hidden == false' %}
           {% for post in posts limit:1 %}
           <div class="postitem bigpost" style="background-image: url('/assets/img/{{ post.category }}.png');">
             <div class="newpostimg" style="background-image: url('{{ post.preview }}');"></div>
@@ -119,10 +119,10 @@
 
             </div>
           </div>
-          {% endfor %}
+          {% endfor %}-->
 
           {% assign posts = site.posts | where_exp: 'post', 'post.hidden == false' %}
-          {% for post in posts offset:1 %}
+          {% for post in posts %}
           <div class="postitem smallpost" data-preview="{{ post.preview }}">
             <div class="postdetail">
               <img class="categimg" src="/assets/img/{{ post.category }}.png">
