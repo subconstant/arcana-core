@@ -1,3 +1,4 @@
 permalink: /:slug
+future: true
 collections:
   - announcements
