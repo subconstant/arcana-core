@@ -1,4 +1,4 @@
-const domain = '127.0.0.1' //! change once deployed with domain!
+const domain = 'a-r-c-a-n-a.moe';
 const avatar_count = [7,9]; // for 2 sets of avatars, second unused rn
 var current_avatar = [0,0];
 
@@ -78,7 +78,7 @@ function switchavatar() { // with second set of avatars, unused
 const previmg = document.getElementById('previewimg');
 const prev = document.getElementById('postpreview');
 
-document.querySelectorAll('.smallpost').forEach(function(item){
+document.querySelectorAll('.postitem').forEach(function(item){
 
   item.onmouseover = function(e){
     previmg.src = item.dataset.preview;
