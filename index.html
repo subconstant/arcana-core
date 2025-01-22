@@ -171,20 +171,7 @@
     <div id="mob_feed">
       <div class="mob_post">
 
-        {% assign notice = site.announcements | reverse %}
-        {% for item in notice limit:1 %}
-        {% if item.hidden != true %}
-        <div class="mob_notice">
-          <div class="announcetext">NOTICE<span style="float:right">POSTED {{ item.date | date_to_string | upcase
-              }}</span></div>
-          <h3>{{ item.title }}</h3>
-          {{ item.content | markdownify }}
-          <br>
-        </div>
-        {% endif %}
-        {% endfor %}
-
-        {% for post in site.posts %}
+        {% for post in site.posts limit:1 %}
         {% if post.hidden != true %}
         <a href="{{ post.url }}">
 
@@ -200,10 +187,44 @@
                   src="/assets/img/{{ post.category }}.png"></span></h2>
             <span class="mob_credits">{{ post.credits }}</span><br>
             <span class="postdate">{{ post.date | date_to_string }}</span>
-        </a>
-      </div>
-      {% endif %}
-      {% endfor %}
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% assign notice = site.announcements | reverse %}
+        {% for item in notice limit:1 %}
+        {% if item.hidden != true %}
+        <div class="mob_notice">
+          <div class="announcetext">NOTICE<span style="float:right">POSTED {{ item.date | date_to_string | upcase
+              }}</span></div>
+          <h3>{{ item.title }}</h3>
+          {{ item.content | markdownify }}
+          <br>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% for post in site.posts offset:1 %}
+        {% if post.hidden != true %}
+        <a href="{{ post.url }}">
+
+          <hr>
+          {% if post.preview != null %}
+          <div class="mob_postpreview" style="background-image: url('{{ post.preview }}');">
+
+          </div>
+          {% endif %}
+
+          <div class="mob_postdetails">
+            <h2>{{ post.title }} <span style="float:right"><img class="categimg"
+                  src="/assets/img/{{ post.category }}.png"></span></h2>
+            <span class="mob_credits">{{ post.credits }}</span><br>
+            <span class="postdate">{{ post.date | date_to_string }}</span>
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
 
     </div>
   </div>
