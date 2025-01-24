@@ -161,7 +161,7 @@
     padding: 3%;
   }
 
-  .postcontent * {
+  .postcontent:not(.postarticle) * {
     padding: 0 !important;
     margin: 0;
   }

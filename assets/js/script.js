@@ -50,14 +50,15 @@ $(document).ready(function () {
     $(element).wrap("<div class='postimg'></div>");
   });
 
-  current_avatar[0] = Math.floor(Math.random() * avatar_count[0]) + 1;
-  console.log(current_avatar[0]);
-  $('#avatar').css("background-image","url('/assets/img/avatar/"
-                  +current_avatar[0]+
-                  ".png')");
+  if ($('#avatar').length) {
+    current_avatar[0] = Math.floor(Math.random() * avatar_count[0]) + 1;
+    console.log(current_avatar[0]);
+    $('#avatar').css("background-image","url('/assets/img/avatar/"
+                    +current_avatar[0]+
+                    ".png')");
 
-  $('#transmission')[0].innerHTML = msg.random();
-
+    $('#transmission')[0].innerHTML = msg.random();
+  };
 });
 
 function switchavatar() { // with second set of avatars, unused
@@ -96,12 +97,14 @@ document.querySelectorAll('.postitem').forEach(function(item){
 });
 
 window.onscroll = function () {
-  if (window.scrollY >= 20) {
-    document.getElementById('postinfo').style.opacity = '0'
-    document.getElementById('postinfo').style.pointerEvents = 'none'
-  } else {
-    document.getElementById('postinfo').style.opacity = '1'
-    document.getElementById('postinfo').style.pointerEvents = 'all'
+  if ($('#postinfo').length) {
+    if (window.scrollY >= 20) {
+      $('#postinfo').style.opacity = '0'
+      $('#postinfo').style.pointerEvents = 'none'
+    } else {
+      $('#postinfo').style.opacity = '1'
+      $('#postinfo').style.pointerEvents = 'all'
+    }
   }
 }
 
@@ -141,5 +144,6 @@ function showRandomImage() {
 setTimeout(showRandomImage,1500);
 
 //threejs
+/*
 const threecontainer = document.getElementById('three');
-console.log(threecontainer.dataset.file);
+console.log(threecontainer.dataset.file);*/
