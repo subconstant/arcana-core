@@ -121,11 +121,11 @@ if ($('.postitem').length) {
 window.onscroll = function () {
   if ($('#postinfo').length) {
     if (window.scrollY >= 20) {
-      $('#postinfo').style.opacity = '0'
-      $('#postinfo').style.pointerEvents = 'none'
+      $('#postinfo')[0].style.opacity = '0'
+      $('#postinfo')[0].style.pointerEvents = 'none'
     } else {
-      $('#postinfo').style.opacity = '1'
-      $('#postinfo').style.pointerEvents = 'all'
+      $('#postinfo')[0].style.opacity = '1'
+      $('#postinfo')[0].style.pointerEvents = 'all'
     }
   }
 }
