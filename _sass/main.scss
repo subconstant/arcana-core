@@ -67,5 +67,10 @@ blockquote {
     width: 65%;
     opacity: 0.5;
   }
+
+  .postcontent * {
+    padding: unset !important;
+    margin: unset !important;
+  }
 }
 
