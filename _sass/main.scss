@@ -4,8 +4,6 @@
 
 @import "var.scss";
 
-//@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap");
-
 @font-face {
   font-family: "AUTHENTIC Sans 90";
   src: url("/assets/font/authentic.woff2");
@@ -18,7 +16,6 @@
 
 body {
   margin: 0;
-  //font-family: 'MS Mincho', 'MS PGothic', 'メイリオ', Meiryo, sans-serif;
   font-family: $font;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
   font-size: 12pt;

@@ -1,8 +1,5 @@
-const domain = 'a-r-c-a-n-a.moe';
-const avatar_count = [7,9]; // for 2 sets of avatars, second unused rn
-var current_avatar = [0,0];
-
-var msg = [
+const avatar = { total: 7, current: 0 }
+const msg = [
   '...'
 ];
 
@@ -11,101 +8,19 @@ Array.prototype.random = function () { return this[Math.floor((Math.random()*thi
 function win(url) {
   let height = window.screen.availHeight - 300;
   let width = window.screen.availWidth - 400;
-
   window.open(url + '?pop', '_blank', 'toolbar=no,location=no,menubar=no,top=150,left=200,width=' + width + ',height=' + height);
 }
 
-$(document).ready(function () {
-  if (window.matchMedia("(max-width: 1000px)").matches) {
-    console.log('loaded on mobile');
-    $('.postcontent').find('*').removeAttr('style');
-  }
+function switchavatar() { // unused
+  avatar.current < avatar.total ? avatar.current = avatar.current +1
+                                : avatar.current = 1;
 
-  $('#backlink').attr('href', document.referrer);
-
-  // Below IFs configure visibility of logo and back button 
-  if (window.menubar.visible) {
-    let url = new URL(location);
-    url.searchParams.delete('pop');
-    history.replaceState(null, null, url);
-  }
-
-  if (window.location.search.includes('?pop')) {
-    document.getElementById('postlogo').style.display = 'none';
-  }
-
-  if (window.location.search.includes('?sub')) {
-
-    if (document.referrer.includes(domain)) {
-      document.getElementById('backlink').style.display = 'inline';
-    }
-
-    if (document.referrer.includes('?pop')) {
-      document.getElementById('postlogo').style.display = 'none';
-    }
-
-  }
-
-  $(".postcontent img").each(function (index, element) {
-    $(element).wrap("<div class='postimg'></div>");
-  });
-
-  if ($('#avatar').length) {
-    current_avatar[0] = Math.floor(Math.random() * avatar_count[0]) + 1;
-    console.log(current_avatar[0]);
-    $('#avatar').css("background-image","url('/assets/img/avatar/"
-                    +current_avatar[0]+
-                    ".png')");
-
-    $('#transmission')[0].innerHTML = msg.random();
-  };
-});
-
-function switchavatar() { // with second set of avatars, unused
-  current_avatar[0] < avatar_count[0] ? current_avatar[0] = current_avatar[0] +1
-                                      : current_avatar[0] = 1;
-
-  current_avatar[1] < avatar_count[1] ? current_avatar[1] = current_avatar[1] +1
-                                      : current_avatar[1] = 1;
-
-  $('#avatar').css("background-image","url('/assets/img/avatar/alt/"+current_avatar[1]+".png')")
+  $('#avatar').css("background-image","url('/assets/img/avatar/alt/"+avatar.current+".png')")
               .delay(200)
               .queue(function (next) {
-                $(this).css("background-image","url('/assets/img/avatar/"+current_avatar[0]+".png')");
+                $(this).css("background-image","url('/assets/img/avatar/"+avatar.current+".png')");
                 next();
               });
-}
-
-const previmg = document.getElementById('previewimg');
-const prev = document.getElementById('postpreview');
-
-document.querySelectorAll('.postitem').forEach(function(item){
-
-  item.onmouseover = function(e){
-    previmg.src = item.dataset.preview;
-    prev.style.display = 'block';
-  };
-
-  item.onmousemove = function(e){
-    prev.style.left = e.clientX + 'px';
-    prev.style.top = e.clientY + 'px';
-  };
-
-  item.onmouseleave = function(e){
-    prev.style.display = 'none';
-  };
-});
-
-window.onscroll = function () {
-  if ($('#postinfo').length) {
-    if (window.scrollY >= 20) {
-      $('#postinfo').style.opacity = '0'
-      $('#postinfo').style.pointerEvents = 'none'
-    } else {
-      $('#postinfo').style.opacity = '1'
-      $('#postinfo').style.pointerEvents = 'all'
-    }
-  }
 }
 
 const images = document.querySelectorAll('#bgholder img');
@@ -118,10 +33,8 @@ function getRandomImage() {
 
   images.forEach(image => {
     if (image.classList.contains('bg')) {
-      // Give 'bg' images a higher weight (e.g., 4x more likely)
       weightedImages.push(image, image, image, image);
     } else if (image.classList.contains('bg_alt')) {
-      // Give 'bg_alt' images a lower weight (e.g., 1x)
       weightedImages.push(image);
     }
   });
@@ -141,7 +54,81 @@ function showRandomImage() {
   setTimeout(showRandomImage, displayTime + fadeOutTime);
 }
 
-setTimeout(showRandomImage,1500);
+
+$(document).ready(function () {
+  if (window.matchMedia("(max-width: 1000px)").matches) {
+    $('.postcontent').find('*').removeAttr('style');
+  }
+
+  $('#backlink').attr('href', document.referrer);
+
+  if (window.menubar.visible) {
+    let url = new URL(location);
+    url.searchParams.delete('pop');
+    history.replaceState(null, null, url);
+  }
+
+  if (window.location.search.includes('?pop')) {
+    document.getElementById('postlogo').style.display = 'none';
+  }
+
+  if (window.location.search.includes('?sub')) {
+    if (document.referrer.includes(window.location.host)) {
+      document.getElementById('backlink').style.display = 'inline';
+    }
+
+    if (document.referrer.includes('?pop')) {
+      document.getElementById('postlogo').style.display = 'none';
+    }
+  }
+
+  $(".postcontent img").each(function (index, element) {
+    $(element).wrap("<div class='postimg'></div>");
+  });
+
+  if ($('#avatar').length) {
+    avatar.current = Math.floor(Math.random() * avatar.total) + 1;
+    $('#avatar').css("background-image","url('/assets/img/avatar/"
+                    +avatar.current+
+                    ".png')");
+
+    $('#transmission')[0].innerHTML = msg.random();
+  };
+
+  if ($('#bgholder').length){
+    setTimeout(showRandomImage,1500);
+  }
+});
+
+if ($('.postitem').length) {
+  document.querySelectorAll('.postitem').forEach(function(item){
+    item.onmouseover = function(e){
+      $('#previewimg')[0].src = item.dataset.preview;
+      $('#postpreview')[0].style.display = 'block';
+    };
+
+    item.onmousemove = function(e){
+      $('#postpreview')[0].style.left = e.clientX + 'px';
+      $('#postpreview')[0].style.top = e.clientY + 'px';
+    };
+
+    item.onmouseleave = function(e){
+      $('#postpreview')[0].style.display = 'none';
+    };
+  });
+}
+
+window.onscroll = function () {
+  if ($('#postinfo').length) {
+    if (window.scrollY >= 20) {
+      $('#postinfo').style.opacity = '0'
+      $('#postinfo').style.pointerEvents = 'none'
+    } else {
+      $('#postinfo').style.opacity = '1'
+      $('#postinfo').style.pointerEvents = 'all'
+    }
+  }
+}
 
 //threejs
 /*

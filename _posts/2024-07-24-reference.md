@@ -5,14 +5,9 @@ credits: "Post composing example"
 category: unknown
 preview: "https://placehold.co/1200x800"
 date: 2024-08-04
-hidden: true
+hidden: false
 ---
 
-<!--
-
-A~R~C~A~N~A Layout Reference
-
--->
 
 ### Default limited width image display
 
