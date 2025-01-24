@@ -52,7 +52,7 @@ blockquote {
   text-align: center;
 
   p{
-    padding: 0 5% 0 5%;
+    padding: 0 5% 0 5% !important;
   }
 
   .postimg{
@@ -63,14 +63,25 @@ blockquote {
     width: 100px !important;
   }
 
-  #cardsimg{
-    width: 65%;
-    opacity: 0.5;
+  @media screen and (min-width: 1000px){
+    .postcontent{
+      width: 60%;
+    }
   }
 
-  .postcontent * {
-    padding: unset !important;
-    margin: unset !important;
+  @media screen and (max-width: 1000px){
+    #statement_logo{
+      margin-bottom: 10px !important;
+    }
+
+    .postcontent * {
+      margin: revert !important;
+    }
+  }
+
+  #cardsimg{
+    width: 45%;
+    opacity: 0.5;
   }
 }
 
