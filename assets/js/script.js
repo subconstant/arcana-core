@@ -129,8 +129,3 @@ window.onscroll = function () {
     }
   }
 }
-
-//threejs
-/*
-const threecontainer = document.getElementById('three');
-console.log(threecontainer.dataset.file);*/
